@@ -42,16 +42,15 @@ int mex(int A[], int n){
                 }
                 printf("\n");
         }else{
-            printf("genommen: %d, plazieren: %d\n", genommen ,plazieren);
+            printf("genommen: %d, plazieren: %d, count: %d\n", genommen ,plazieren, count);
+
             if(A[count]==count){
                 count++;
             }
-            if(A[count]!=n+1){
+            if(A[count]<n && count < i){
                 plazieren = A[count];
                 genommen = A[plazieren];
-                if(plazieren < n){
-                    A[plazieren] = plazieren;
-                }
+                A[plazieren] = plazieren;
                 range = 1;
             }else{
                 range = 0;
