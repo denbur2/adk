@@ -19,7 +19,7 @@ int mex(int A[], int n){
             if(A[count]==count){
                 count++;
             }
-            if(A[count]!=n+1){
+            if(A[count]<n){
                 plazieren = A[count];
                 genommen = A[plazieren];
                 if(plazieren < n){
