@@ -1,12 +1,12 @@
 #include "runtime_input.h"
-#include "mex.h"
+#include "majority.h"
 #include <stdio.h>
 
 int main(){
     int B[256] = {0};
     int size = 0;
     runtime_input(B, &size);
-    printf("%d\n", mex(B, size));
+    printf("%d\n", majority(B, size));
 
     /*
     for(int i = 0; i < 256; i++){
