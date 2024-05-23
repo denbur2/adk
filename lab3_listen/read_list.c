@@ -1,4 +1,8 @@
 #include "read_list.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
 
 struct List* read_list()
 {
