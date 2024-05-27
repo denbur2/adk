@@ -1,6 +1,8 @@
 #include "read_list.h"
+#include "v1_liste.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 
@@ -16,13 +18,13 @@ struct List* read_list()
     }
     int key = atoi(number);
     while(key != 0) {
-        struct List* p = new_List(key);
+        struct List* dieListe = new_List(key);
         if(L == NULL) {
-            L = p;
+            L = dieListe;
         } else {
-            last->next = p;
+            last->next = dieListe;
         }
-        last = p;
+        last = dieListe;
         number = strtok(NULL, " \n");
         if(number==NULL) {
             return L;

@@ -9,7 +9,7 @@ CC := gcc
 CFLAGS := -Wall -std=c11 -static
 
 # Quelldateien
-SRCS := code.c read_list.c v1_liste.c#majority.c #mex.c # #even_first.c
+SRCS := code.c baum.c#majority.c #mex.c # #even_first.c
 # Objektdateien
 OBJS := $(SRCS:.c=.o)
 
