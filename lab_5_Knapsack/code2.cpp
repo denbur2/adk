@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algrorithm>
 
 
 void pack(std::vector<std::vector<int>> not_packed_items, std::vector<std::vector<int>> current_items, std::vector<std::vector<int>> &best_items,
@@ -14,6 +15,20 @@ void pack(std::vector<std::vector<int>> not_packed_items, std::vector<std::vecto
 
             if(summegewicht+not_packed_items[i][1] > volumen){
                 current_items[0][0]=summewert;
+
+                //test
+                /*
+                
+                if(current_items.size()==4){
+                    if(current_items[1][2]==1 && current_items[2][2]==3 && current_items[3][2]==5){
+                        std::cout << "test" << summewert << std::endl;
+                    }
+                }
+                
+                */
+
+
+
                 if(current_items[0][0] > best_items[0][0]){ 
                     best_items = current_items;
                     return;
@@ -23,8 +38,12 @@ void pack(std::vector<std::vector<int>> not_packed_items, std::vector<std::vecto
                 current_items.push_back(not_packed_items[i]);
                 summegewicht += not_packed_items[i][1];
                 summewert += not_packed_items[i][0];
+                std::vector<int> temp=not_packed_items[i];
                 not_packed_items[i] = {0};
+
                 pack(not_packed_items, current_items, best_items, summewert, summegewicht, volumen, itemsize, ebene);
+
+                not_packed_items[i]=temp;
                 summegewicht -= not_packed_items[i][1];
                 summewert -= not_packed_items[i][0];
                 current_items.pop_back();
@@ -36,9 +55,9 @@ void pack(std::vector<std::vector<int>> not_packed_items, std::vector<std::vecto
 
 int main(){
     std::string input;
-    //std::getline(std::cin, input);
-    //std::stringstream ss(input);
-    std::stringstream ss("5   33  14 11   6 5   13 13   16 18   7 9");
+    std::getline(std::cin, input);
+    std::stringstream ss(input);
+    //std::stringstream ss("5 250   25 20   93 69   57 58   23 35   51 82");
     std::getline(ss, input, ' ');
     while(input.empty()){
         std::getline(ss, input, ' ');
@@ -69,11 +88,12 @@ int main(){
         gewicht = std::stoi(input);
         items.push_back({wert, gewicht, itemcount-c});  
     }
-
+/*
     for(int i=0; i<items.size(); i++){
         std::cout << "wert: " << items[i][0] << "\ngewicht: " << items[i][1] << "\nintemcount: " << items[i][2] << std::endl;
         std::cout << itemcount << std::endl;
     }
+*/
 
 
 
@@ -90,9 +110,11 @@ int main(){
     pack(not_packed_items, current_items, best_items ,summewert, summegewicht, volumen, items.size(), ebene);
 
 
-    std::cout<<"\n";
+    //std::cout<<"\n";
+
+
     for(int i=1; i<best_items.size(); i++){
-        std::cout << best_items[i][2] << " "<<std::endl;
+        std::cout << best_items[i][2] << " ";
     }
     std::cout<<std::endl;
 
